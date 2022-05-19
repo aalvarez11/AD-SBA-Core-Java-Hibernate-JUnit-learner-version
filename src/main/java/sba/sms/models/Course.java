@@ -28,7 +28,7 @@ public class Course {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToMany(mappedBy = "courses",
-                cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+                cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},
                 fetch = FetchType.EAGER)
     List<Student> students = new ArrayList<>();
 
