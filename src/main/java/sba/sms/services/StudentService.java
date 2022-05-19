@@ -15,9 +15,9 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "getStudentCourses",
-        query = "select c.id, c.name, c.instructor from Student s " +
+        query = "select c.id, c.name, c.instructor from student s " +
                 "join student_courses sc on s.email = sc.student_email " +
-                "join Course c on c.id = sc.course_id " +
+                "join course c on c.id = sc.course_id " +
                 "where s.email = :email")
 
 @Log

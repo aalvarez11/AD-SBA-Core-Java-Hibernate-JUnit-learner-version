@@ -71,7 +71,7 @@ public class CourseService implements CourseI {
         try {
             tx = s.beginTransaction();
             //use Native query
-            Query q = s.createNamedQuery("from Course", Course.class);
+            Query q = s.createNamedQuery("from course", Course.class);
             courseList = q.getResultList();
             tx.commit();
         } catch (HibernateException e) {

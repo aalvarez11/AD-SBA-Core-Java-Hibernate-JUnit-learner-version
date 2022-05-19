@@ -38,6 +38,12 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "courses_id"))
     List<Course> courses = new ArrayList<>();
 
+    public Student(String email, String name, String password) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
