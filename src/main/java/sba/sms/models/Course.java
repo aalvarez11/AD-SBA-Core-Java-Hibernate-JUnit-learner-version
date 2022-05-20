@@ -15,6 +15,7 @@ import java.util.*;
 @Entity
 public class Course {
     @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     int id;
 
     @NonNull

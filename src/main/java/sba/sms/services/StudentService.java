@@ -5,20 +5,13 @@ import lombok.extern.java.Log;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import org.hibernate.query.NativeQuery;
 import sba.sms.dao.StudentI;
 import sba.sms.models.Course;
 import sba.sms.models.Student;
 import sba.sms.utils.HibernateUtil;
 
 import java.util.List;
-
-@NamedNativeQuery(
-        name = "getStudentCourses",
-        query = "select c.id, c.name, c.instructor from student s " +
-                "join student_courses sc on s.email = sc.student_email " +
-                "join course c on c.id = sc.courses_id " +
-                "where s.email = :email")
 
 @Log
 public class StudentService implements StudentI {
@@ -143,7 +136,10 @@ public class StudentService implements StudentI {
         try {
             tx = s.beginTransaction();
             //use Native query
-            Query q = s.createNamedQuery("getStudentCourses", Course.class);
+            NativeQuery q = s.createNativeQuery("select c.id, c.name, c.instructor from student s " +
+                    "join student_courses sc on s.email = sc.student_email " +
+                    "join course c on c.id = sc.courses_id " +
+                    "where s.email = :email", Course.class);
             q.setParameter("email", email);
             courseList = q.getResultList();
             tx.commit();
