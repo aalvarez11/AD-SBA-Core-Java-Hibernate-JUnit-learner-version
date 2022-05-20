@@ -33,6 +33,13 @@ public class Course {
                 fetch = FetchType.EAGER)
     List<Student> students = new ArrayList<>();
 
+    //constructor used in testing
+    public Course (int id, String name, String instructor) {
+        this.id = id;
+        this.name = name;
+        this.instructor =instructor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
